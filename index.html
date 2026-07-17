@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ハルヤ｜ありのまま横丁 — 何者かになんてならなくてもいい</title>
-<meta name="description" content="ラジオパーソナリティ・ハルヤ（菊地顕太郎）のポータルサイト。ラジオ番組「ありのまま横丁」、声の名刺、SNSへの入り口。何者かになんてならなくてもいい、一人ひとりが素晴らしい存在なんだ。">
+<meta name="description" content="ラジオパーソナリティ・ハルヤ（添暖／菊地顕太郎）のポータルサイト。ラジオ番組「ありのまま横丁」、声の名刺、SNSへの入り口。何者かになんてならなくてもいい、一人ひとりが素晴らしい存在なんだ。">
 <meta property="og:title" content="ハルヤ｜ありのまま横丁">
 <meta property="og:description" content="何者かになんてならなくてもいい。ラジオパーソナリティ・ハルヤの活動の入り口です。">
 <meta property="og:type" content="website">
@@ -13,15 +13,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --dusk-deep: #1d1a2b;
-    --dusk: #262238;
-    --dusk-soft: #322c47;
+    /* 夕暮れの空 */
+    --sky-top: #171430;
+    --sky-mid: #2b2154;
+    --sky-glow: #6d3a78;
+    --neon-pink: #e77fb0;
+    --neon-purple: #9f7fe0;
+    /* 横丁の灯り */
     --lantern: #f0a04b;
     --lantern-soft: #f6c98a;
-    --paper: #f5efe4;
-    --paper-dim: #cfc6b8;
+    /* 地の色 */
+    --dusk-deep: #1b1732;
+    --dusk: #241d42;
+    --dusk-soft: #2f2757;
+    --paper: #f6efe3;
+    --paper-dim: #cfc5be;
     --ink-soft: #a89ec0;
-    --line: rgba(240, 160, 75, 0.25);
+    --line: rgba(240, 160, 75, 0.28);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -38,62 +46,114 @@
 
   .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
-  /* ===== ヘッダー ===== */
+  /* ===== ヒーロー：夕暮れの横丁 ===== */
   header {
-    min-height: 88svh;
+    min-height: 92svh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     position: relative;
     overflow: hidden;
-    background:
-      radial-gradient(ellipse 60% 40% at 50% 108%, rgba(240,160,75,0.32), transparent 70%),
-      radial-gradient(ellipse 90% 60% at 50% 115%, rgba(240,160,75,0.14), transparent 70%),
-      linear-gradient(180deg, var(--dusk-deep) 0%, var(--dusk) 100%);
-    padding: 80px 24px 96px;
+    background: linear-gradient(180deg,
+      var(--sky-top) 0%,
+      var(--sky-mid) 38%,
+      var(--sky-glow) 68%,
+      #b0447c 88%,
+      #d97a55 100%);
+    padding: 96px 24px 200px;
   }
+  /* 空に散る星 */
+  .stars { position: absolute; inset: 0 0 40% 0; pointer-events: none; }
+  .stars i {
+    position: absolute;
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: rgba(246, 239, 227, 0.8);
+    animation: twinkle 3.6s ease-in-out infinite;
+  }
+  .stars i:nth-child(2n) { width: 2px; height: 2px; animation-delay: 1.2s; }
+  .stars i:nth-child(3n) { animation-delay: 2.1s; }
+  @keyframes twinkle { 0%,100% { opacity: 0.25; } 50% { opacity: 0.95; } }
+
+  /* 提灯の紐 */
+  .lantern-string { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: min(920px, 120vw); pointer-events: none; }
+  .lantern-string svg { width: 100%; height: auto; display: block; }
+  .sway { transform-origin: center -10px; animation: sway 5.5s ease-in-out infinite; }
+  .sway.s2 { animation-delay: 1.4s; }
+  .sway.s3 { animation-delay: 2.6s; }
+  @keyframes sway { 0%,100% { transform: rotate(-2.4deg); } 50% { transform: rotate(2.4deg); } }
+
+  /* 横丁のシルエット */
+  .alley { position: absolute; left: 0; right: 0; bottom: -2px; pointer-events: none; }
+  .alley svg { width: 100%; height: auto; display: block; }
+
+  .hero-inner { position: relative; z-index: 2; }
   .hero-eyebrow {
     color: var(--lantern-soft);
     font-size: 0.85rem;
     letter-spacing: 0.35em;
-    margin-bottom: 28px;
+    margin-bottom: 26px;
+    text-shadow: 0 0 14px rgba(240,160,75,0.5);
   }
   h1 {
-    font-size: clamp(1.6rem, 5.5vw, 2.6rem);
+    font-size: clamp(1.6rem, 5.5vw, 2.7rem);
     line-height: 1.7;
-    margin-bottom: 28px;
+    margin-bottom: 26px;
+    text-shadow: 0 2px 26px rgba(23, 20, 48, 0.8);
   }
-  h1 .small { display: block; font-size: 0.5em; color: var(--paper-dim); margin-top: 18px; font-weight: 500; }
+  h1 .small { display: block; font-size: 0.48em; color: var(--paper); opacity: 0.85; margin-top: 18px; font-weight: 500; }
   .hero-lead {
-    color: var(--paper-dim);
+    color: var(--paper);
+    opacity: 0.88;
     font-size: 0.98rem;
     max-width: 34em;
     margin: 0 auto;
-  }
-  .lantern-dot {
-    display: inline-block;
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--lantern);
-    box-shadow: 0 0 18px 6px rgba(240,160,75,0.45);
-    margin-bottom: 26px;
+    text-shadow: 0 1px 14px rgba(23, 20, 48, 0.8);
   }
 
   /* ===== セクション共通 ===== */
-  section { padding: 84px 0; }
+  section { padding: 88px 0; position: relative; }
   section:nth-of-type(even) { background: var(--dusk); }
   .sec-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     color: var(--lantern);
     font-size: 0.8rem;
     letter-spacing: 0.3em;
     margin-bottom: 14px;
   }
+  .sec-label::before {
+    content: "";
+    width: 11px; height: 14px;
+    border-radius: 45% 45% 50% 50%;
+    background: radial-gradient(circle at 50% 40%, var(--lantern-soft), var(--lantern) 70%);
+    box-shadow: 0 0 12px 3px rgba(240,160,75,0.45);
+  }
   h2 { font-size: clamp(1.35rem, 4vw, 1.8rem); margin-bottom: 30px; line-height: 1.6; }
   section p { color: var(--paper-dim); margin-bottom: 1.4em; }
   section p strong { color: var(--paper); font-weight: 500; }
 
-  /* ===== 物語 ===== */
+  /* ===== プロフィール ===== */
+  .profile-head {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 34px;
+    flex-wrap: wrap;
+  }
+  .profile-photo {
+    width: 148px; height: 148px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--lantern);
+    box-shadow: 0 0 0 6px rgba(240,160,75,0.12), 0 6px 30px rgba(240,160,75,0.28);
+    flex-shrink: 0;
+  }
+  .profile-head h2 { margin-bottom: 8px; }
+  .profile-head .role { color: var(--neon-pink); font-size: 0.9rem; letter-spacing: 0.12em; }
+
   .story-quote {
     border-left: 3px solid var(--lantern);
     padding: 6px 0 6px 22px;
@@ -120,12 +180,29 @@
     display: flex;
     gap: 14px;
     padding: 10px 0;
-    border-top: 1px dashed rgba(245,239,228,0.15);
+    border-top: 1px dashed rgba(246,239,227,0.15);
     font-size: 0.93rem;
     color: var(--paper-dim);
   }
   .fact-list li:first-child { border-top: none; padding-top: 0; }
   .fact-list .k { color: var(--lantern-soft); flex: 0 0 6.5em; }
+
+  /* 名刺画像 */
+  .meishi-figure {
+    margin: 36px 0 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(231,127,176,0.35);
+    box-shadow: 0 10px 40px rgba(109,58,120,0.45);
+  }
+  .meishi-figure img { display: block; width: 100%; }
+  .meishi-figure figcaption {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    text-align: center;
+    padding: 10px 14px;
+    background: var(--dusk-soft);
+  }
 
   /* ===== ボタン ===== */
   .btn-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
@@ -142,11 +219,12 @@
   .btn-primary {
     background: linear-gradient(135deg, var(--lantern), #e2823a);
     color: #2a1c0d;
-    box-shadow: 0 4px 22px rgba(240,160,75,0.35);
+    box-shadow: 0 4px 22px rgba(240,160,75,0.4);
   }
   .btn-ghost {
     border: 1px solid var(--line);
     color: var(--lantern-soft);
+    background: rgba(23,20,48,0.35);
   }
 
   /* ===== SNSリンク ===== */
@@ -163,30 +241,100 @@
     border-radius: 14px;
     padding: 22px 22px 20px;
     text-decoration: none;
-    transition: transform 0.15s ease, border-color 0.15s ease;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   }
-  .link-card:hover { transform: translateY(-3px); border-color: var(--lantern); }
+  .link-card:hover { transform: translateY(-3px); border-color: var(--lantern); box-shadow: 0 8px 30px rgba(240,160,75,0.18); }
   .link-card .name { color: var(--paper); font-weight: 700; font-size: 1rem; }
   .link-card .desc { color: var(--paper-dim); font-size: 0.85rem; margin-top: 6px; line-height: 1.7; }
   .link-card .arrow { color: var(--lantern); font-size: 0.85rem; margin-top: 10px; display: inline-block; }
+  .link-card.soon { opacity: 0.6; pointer-events: none; border-style: dashed; }
+  .link-card.soon .arrow { color: var(--ink-soft); }
 
   /* ===== フッター ===== */
   footer {
     text-align: center;
-    padding: 60px 24px 48px;
+    padding: 0 24px 48px;
     color: var(--ink-soft);
     font-size: 0.82rem;
     background: var(--dusk-deep);
   }
+  .footer-lanterns { max-width: 340px; margin: 0 auto 8px; opacity: 0.9; }
+  .footer-lanterns svg { width: 100%; height: auto; }
   footer .foot-mark { color: var(--lantern-soft); font-family: "Shippori Mincho", serif; font-size: 1rem; margin-bottom: 12px; }
+
+  @media (max-width: 540px) {
+    .profile-head { flex-direction: column; text-align: center; }
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap">
-    <span class="lantern-dot" aria-hidden="true"></span>
-    <p class="hero-eyebrow">HARUYA — ハルヤ</p>
+  <div class="stars" aria-hidden="true">
+    <i style="top:12%;left:14%"></i><i style="top:22%;left:28%"></i><i style="top:9%;left:44%"></i>
+    <i style="top:18%;left:61%"></i><i style="top:11%;left:78%"></i><i style="top:26%;left:88%"></i>
+    <i style="top:31%;left:7%"></i><i style="top:34%;left:49%"></i><i style="top:29%;left:70%"></i>
+    <i style="top:6%;left:90%"></i><i style="top:16%;left:5%"></i><i style="top:38%;left:33%"></i>
+  </div>
+
+  <!-- 提灯の紐 -->
+  <div class="lantern-string" aria-hidden="true">
+    <svg viewBox="0 0 920 130" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="42%" r="60%">
+          <stop offset="0%" stop-color="#f6c98a"/>
+          <stop offset="70%" stop-color="#f0a04b"/>
+          <stop offset="100%" stop-color="#d97e2e"/>
+        </radialGradient>
+        <filter id="blur"><feGaussianBlur stdDeviation="9"/></filter>
+      </defs>
+      <path d="M-10 18 Q 230 62 460 40 T 930 30" fill="none" stroke="#100e22" stroke-width="2.5" opacity="0.85"/>
+      <!-- 提灯 ×5 -->
+      <g class="sway" transform="translate(120,38)">
+        <circle r="26" fill="#f0a04b" opacity="0.28" filter="url(#blur)"/>
+        <line x1="0" y1="-12" x2="0" y2="0" stroke="#100e22" stroke-width="2"/>
+        <rect x="-13" y="0" width="26" height="34" rx="11" fill="url(#glow)"/>
+        <path d="M-13 8 h26 M-13 17 h26 M-13 26 h26" stroke="#c96f24" stroke-width="1" opacity="0.55"/>
+        <rect x="-7" y="-4" width="14" height="5" rx="2" fill="#3a2c19"/>
+        <rect x="-7" y="33" width="14" height="5" rx="2" fill="#3a2c19"/>
+      </g>
+      <g class="sway s2" transform="translate(305,52) scale(0.82)">
+        <circle r="26" fill="#f0a04b" opacity="0.28" filter="url(#blur)"/>
+        <line x1="0" y1="-12" x2="0" y2="0" stroke="#100e22" stroke-width="2"/>
+        <rect x="-13" y="0" width="26" height="34" rx="11" fill="url(#glow)"/>
+        <path d="M-13 8 h26 M-13 17 h26 M-13 26 h26" stroke="#c96f24" stroke-width="1" opacity="0.55"/>
+        <rect x="-7" y="-4" width="14" height="5" rx="2" fill="#3a2c19"/>
+        <rect x="-7" y="33" width="14" height="5" rx="2" fill="#3a2c19"/>
+      </g>
+      <g class="sway s3" transform="translate(470,44)">
+        <circle r="26" fill="#f0a04b" opacity="0.28" filter="url(#blur)"/>
+        <line x1="0" y1="-12" x2="0" y2="0" stroke="#100e22" stroke-width="2"/>
+        <rect x="-13" y="0" width="26" height="34" rx="11" fill="url(#glow)"/>
+        <path d="M-13 8 h26 M-13 17 h26 M-13 26 h26" stroke="#c96f24" stroke-width="1" opacity="0.55"/>
+        <rect x="-7" y="-4" width="14" height="5" rx="2" fill="#3a2c19"/>
+        <rect x="-7" y="33" width="14" height="5" rx="2" fill="#3a2c19"/>
+      </g>
+      <g class="sway s2" transform="translate(650,40) scale(0.85)">
+        <circle r="26" fill="#f0a04b" opacity="0.28" filter="url(#blur)"/>
+        <line x1="0" y1="-12" x2="0" y2="0" stroke="#100e22" stroke-width="2"/>
+        <rect x="-13" y="0" width="26" height="34" rx="11" fill="url(#glow)"/>
+        <path d="M-13 8 h26 M-13 17 h26 M-13 26 h26" stroke="#c96f24" stroke-width="1" opacity="0.55"/>
+        <rect x="-7" y="-4" width="14" height="5" rx="2" fill="#3a2c19"/>
+        <rect x="-7" y="33" width="14" height="5" rx="2" fill="#3a2c19"/>
+      </g>
+      <g class="sway" transform="translate(820,34) scale(0.9)">
+        <circle r="26" fill="#f0a04b" opacity="0.28" filter="url(#blur)"/>
+        <line x1="0" y1="-12" x2="0" y2="0" stroke="#100e22" stroke-width="2"/>
+        <rect x="-13" y="0" width="26" height="34" rx="11" fill="url(#glow)"/>
+        <path d="M-13 8 h26 M-13 17 h26 M-13 26 h26" stroke="#c96f24" stroke-width="1" opacity="0.55"/>
+        <rect x="-7" y="-4" width="14" height="5" rx="2" fill="#3a2c19"/>
+        <rect x="-7" y="33" width="14" height="5" rx="2" fill="#3a2c19"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-inner wrap">
+    <p class="hero-eyebrow">HARUYA — ハルヤ（添暖）</p>
     <h1>
       何者かになんて、<br>ならなくてもいい。
       <span class="small">ラジオパーソナリティ　ハルヤ（菊地顕太郎）</span>
@@ -200,12 +348,69 @@
       <a class="btn btn-ghost" href="#profile">ハルヤってどんな人？</a>
     </div>
   </div>
+
+  <!-- 横丁のシルエット -->
+  <div class="alley" aria-hidden="true">
+    <svg viewBox="0 0 1440 190" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#241d42"/>
+          <stop offset="100%" stop-color="#1b1732"/>
+        </linearGradient>
+      </defs>
+      <!-- 奥の街並み -->
+      <path d="M0 120 h70 v-38 h48 v38 h60 v-58 h52 v58 h74 v-30 h44 v30 h90 v-52 h58 v52 h72 v-26 h50 v26 h86 v-46 h54 v46 h78 v-60 h56 v60 h70 v-32 h48 v32 h90 v-50 h56 v50 h72 v-28 h46 v28 h66 v-44 h50 v44 h100 V190 H0 Z"
+            fill="#332a5e" opacity="0.75"/>
+      <!-- 手前の建物 -->
+      <path d="M0 190 v-82 h96 v-22 h30 v22 h78 v82 Z" fill="url(#bld)"/>
+      <path d="M240 190 v-104 h120 v104 Z" fill="url(#bld)"/>
+      <path d="M420 190 v-70 h140 v70 Z" fill="url(#bld)"/>
+      <path d="M620 190 v-96 h110 v-18 h28 v18 h60 v96 Z" fill="url(#bld)"/>
+      <path d="M890 190 v-76 h130 v76 Z" fill="url(#bld)"/>
+      <path d="M1080 190 v-98 h116 v98 Z" fill="url(#bld)"/>
+      <path d="M1260 190 v-70 h180 v70 Z" fill="url(#bld)"/>
+      <!-- 灯りのともる窓 -->
+      <g fill="#f0a04b">
+        <rect x="34" y="126" width="12" height="14" rx="2" opacity="0.9"/>
+        <rect x="120" y="118" width="12" height="14" rx="2" opacity="0.65"/>
+        <rect x="272" y="108" width="12" height="14" rx="2" opacity="0.9"/>
+        <rect x="318" y="130" width="12" height="14" rx="2" opacity="0.55"/>
+        <rect x="458" y="138" width="12" height="14" rx="2" opacity="0.85"/>
+        <rect x="662" y="112" width="12" height="14" rx="2" opacity="0.7"/>
+        <rect x="700" y="140" width="12" height="14" rx="2" opacity="0.9"/>
+        <rect x="930" y="130" width="12" height="14" rx="2" opacity="0.8"/>
+        <rect x="1120" y="110" width="12" height="14" rx="2" opacity="0.9"/>
+        <rect x="1160" y="142" width="12" height="14" rx="2" opacity="0.6"/>
+        <rect x="1310" y="136" width="12" height="14" rx="2" opacity="0.85"/>
+      </g>
+      <!-- ネオン看板 -->
+      <g font-family="sans-serif">
+        <rect x="500" y="128" width="18" height="46" rx="3" fill="#e77fb0" opacity="0.85"/>
+        <rect x="503" y="133" width="12" height="10" rx="1.5" fill="#1b1732" opacity="0.5"/>
+        <rect x="503" y="147" width="12" height="10" rx="1.5" fill="#1b1732" opacity="0.5"/>
+        <rect x="960" y="122" width="16" height="52" rx="3" fill="#9f7fe0" opacity="0.85"/>
+        <rect x="963" y="128" width="10" height="9" rx="1.5" fill="#1b1732" opacity="0.5"/>
+        <rect x="963" y="141" width="10" height="9" rx="1.5" fill="#1b1732" opacity="0.5"/>
+        <rect x="963" y="154" width="10" height="9" rx="1.5" fill="#1b1732" opacity="0.5"/>
+      </g>
+      <!-- 暖簾 -->
+      <g fill="#b0447c" opacity="0.9">
+        <path d="M740 94 h58 v26 h-14 v-18 h-8 v18 h-14 v-18 h-8 v18 h-14 Z"/>
+      </g>
+    </svg>
+  </div>
 </header>
 
 <section id="profile">
   <div class="wrap">
     <p class="sec-label">PROFILE</p>
-    <h2>聴くことが、いちばんの得意です</h2>
+    <div class="profile-head">
+      <img class="profile-photo" src="images/profile.jpg" alt="ハルヤ（菊地顕太郎）の写真">
+      <div>
+        <h2>聴くことが、<br>いちばんの得意です</h2>
+        <p class="role">ハルヤ（添暖）／菊地顕太郎</p>
+      </div>
+    </div>
     <p>
       はじめまして。ゆめのたね放送局 札幌スタジオでパーソナリティをしている、ハルヤこと菊地顕太郎です。
     </p>
@@ -237,10 +442,15 @@
       毎回ひとりのゲストを横丁の暖簾の奥にお迎えして、その人の「ありのまま」を一緒に眺める30分。
       肩書きの手前にある、その人だけの物語を聴いていきます。
     </p>
+    <figure class="meishi-figure">
+      <img src="images/meishi.png" alt="ありのまま横丁 番組名刺 — 何者かになんてならなくてもいい 一人ひとりがみんな輝いている ゆめのたね放送局レッドチャンネル 毎週日曜日16:30 ONAIR"
+           onerror="this.closest('.meishi-figure').style.display='none'">
+      <figcaption>ありのまま横丁 — 毎週日曜16:30 ONAIR（ゆめのたね放送局 レッドチャンネル）</figcaption>
+    </figure>
     <div class="card">
       <h3>放送情報</h3>
       <ul class="fact-list">
-        <li><span class="k">放送局</span><span>ゆめのたね放送局 札幌スタジオ</span></li>
+        <li><span class="k">放送局</span><span>ゆめのたね放送局 札幌スタジオ（レッドチャンネル）</span></li>
         <li><span class="k">放送日時</span><span>毎週日曜 16:30〜17:00</span></li>
         <li><span class="k">アーカイブ</span><span>stand.FMでいつでも聴けます</span></li>
       </ul>
@@ -309,11 +519,39 @@
         <div class="desc">ゲスト募集や、ご縁のある方々との交流</div>
         <span class="arrow">→ 見にいく</span>
       </a>
+      <div class="link-card soon">
+        <div class="name">note</div>
+        <div class="desc">じっくり読める文章の置き場所</div>
+        <span class="arrow">…ただいま準備中</span>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
+  <div class="footer-lanterns" aria-hidden="true">
+    <svg viewBox="0 0 340 70" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 14 Q 85 34 170 24 T 340 20" fill="none" stroke="#100e22" stroke-width="2"/>
+      <g transform="translate(70,24) scale(0.55)">
+        <line x1="0" y1="-12" x2="0" y2="0" stroke="#100e22" stroke-width="2"/>
+        <rect x="-13" y="0" width="26" height="34" rx="11" fill="#f0a04b"/>
+        <rect x="-7" y="-4" width="14" height="5" rx="2" fill="#3a2c19"/>
+        <rect x="-7" y="33" width="14" height="5" rx="2" fill="#3a2c19"/>
+      </g>
+      <g transform="translate(170,28) scale(0.55)">
+        <line x1="0" y1="-12" x2="0" y2="0" stroke="#100e22" stroke-width="2"/>
+        <rect x="-13" y="0" width="26" height="34" rx="11" fill="#e77fb0"/>
+        <rect x="-7" y="-4" width="14" height="5" rx="2" fill="#3a2c19"/>
+        <rect x="-7" y="33" width="14" height="5" rx="2" fill="#3a2c19"/>
+      </g>
+      <g transform="translate(270,24) scale(0.55)">
+        <line x1="0" y1="-12" x2="0" y2="0" stroke="#100e22" stroke-width="2"/>
+        <rect x="-13" y="0" width="26" height="34" rx="11" fill="#f0a04b"/>
+        <rect x="-7" y="-4" width="14" height="5" rx="2" fill="#3a2c19"/>
+        <rect x="-7" y="33" width="14" height="5" rx="2" fill="#3a2c19"/>
+      </g>
+    </svg>
+  </div>
   <p class="foot-mark">— 今日も、横丁に灯りをともしています —</p>
   <p>© ハルヤ（菊地顕太郎）｜ありのまま横丁</p>
 </footer>
