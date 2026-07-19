@@ -1,0 +1,326 @@
+:root {
+  /* 夕暮れの空 */
+  --sky-top: #171430;
+  --sky-mid: #2b2154;
+  --sky-glow: #6d3a78;
+  --neon-pink: #e77fb0;
+  --neon-purple: #9f7fe0;
+  /* 横丁の灯り */
+  --lantern: #f0a04b;
+  --lantern-soft: #f6c98a;
+  /* 地の色 */
+  --dusk-deep: #1b1732;
+  --dusk: #241d42;
+  --dusk-soft: #2f2757;
+  --paper: #f6efe3;
+  --paper-dim: #cfc5be;
+  --ink-soft: #a89ec0;
+  --line: rgba(240, 160, 75, 0.28);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dusk-deep);
+  color: var(--paper);
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+}
+h1, h2, h3 { font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif; font-weight: 600; }
+a { color: var(--lantern-soft); }
+img { max-width: 100%; }
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== ヒーロー：夕暮れの横丁 ===== */
+header {
+  min-height: 92svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg,
+    var(--sky-top) 0%,
+    var(--sky-mid) 38%,
+    var(--sky-glow) 68%,
+    #b0447c 88%,
+    #d97a55 100%);
+  padding: 96px 24px 200px;
+}
+header.subpage {
+  min-height: 54svh;
+  padding: 120px 24px 150px;
+}
+/* 空に散る星 */
+.stars { position: absolute; inset: 0 0 40% 0; pointer-events: none; }
+.stars i {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: rgba(246, 239, 227, 0.8);
+  animation: twinkle 3.6s ease-in-out infinite;
+}
+.stars i:nth-child(2n) { width: 2px; height: 2px; animation-delay: 1.2s; }
+.stars i:nth-child(3n) { animation-delay: 2.1s; }
+@keyframes twinkle { 0%,100% { opacity: 0.25; } 50% { opacity: 0.95; } }
+
+/* 提灯の紐 */
+.lantern-string { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: min(920px, 120vw); pointer-events: none; }
+.lantern-string svg { width: 100%; height: auto; display: block; }
+.sway { transform-origin: center -10px; animation: sway 5.5s ease-in-out infinite; }
+.sway.s2 { animation-delay: 1.4s; }
+.sway.s3 { animation-delay: 2.6s; }
+@keyframes sway { 0%,100% { transform: rotate(-2.4deg); } 50% { transform: rotate(2.4deg); } }
+
+/* 横丁のシルエット */
+.alley { position: absolute; left: 0; right: 0; bottom: -2px; pointer-events: none; }
+.alley svg { width: 100%; height: auto; display: block; }
+
+/* 戻るリンク */
+.back-link {
+  position: absolute;
+  top: 20px; left: 24px;
+  z-index: 5;
+  color: var(--paper);
+  opacity: 0.85;
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+.back-link:hover { opacity: 1; }
+
+.hero-inner { position: relative; z-index: 2; }
+.hero-eyebrow {
+  color: var(--lantern-soft);
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  margin-bottom: 26px;
+  text-shadow: 0 0 14px rgba(240,160,75,0.5);
+}
+h1 {
+  font-size: clamp(1.6rem, 5.5vw, 2.7rem);
+  line-height: 1.7;
+  margin-bottom: 26px;
+  text-shadow: 0 2px 26px rgba(23, 20, 48, 0.8);
+}
+h1 .small { display: block; font-size: 0.48em; color: var(--paper); opacity: 0.85; margin-top: 18px; font-weight: 500; }
+.hero-lead {
+  color: var(--paper);
+  opacity: 0.88;
+  font-size: 0.98rem;
+  max-width: 34em;
+  margin: 0 auto;
+  text-shadow: 0 1px 14px rgba(23, 20, 48, 0.8);
+}
+
+/* ===== セクション共通 ===== */
+section { padding: 88px 0; position: relative; }
+section:nth-of-type(even) { background: var(--dusk); }
+.sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--lantern);
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 14px;
+}
+.sec-label::before {
+  content: "";
+  width: 11px; height: 14px;
+  border-radius: 45% 45% 50% 50%;
+  background: radial-gradient(circle at 50% 40%, var(--lantern-soft), var(--lantern) 70%);
+  box-shadow: 0 0 12px 3px rgba(240,160,75,0.45);
+}
+h2 { font-size: clamp(1.35rem, 4vw, 1.8rem); margin-bottom: 30px; line-height: 1.6; }
+section p { color: var(--paper-dim); margin-bottom: 1.4em; }
+section p strong { color: var(--paper); font-weight: 500; }
+
+/* ===== プロフィール ===== */
+.profile-head {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 34px;
+  flex-wrap: wrap;
+}
+.profile-photo {
+  width: 148px; height: 148px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--lantern);
+  box-shadow: 0 0 0 6px rgba(240,160,75,0.12), 0 6px 30px rgba(240,160,75,0.28);
+  flex-shrink: 0;
+}
+.profile-head h2 { margin-bottom: 8px; }
+.profile-head .role { color: var(--neon-pink); font-size: 0.9rem; letter-spacing: 0.12em; }
+
+.story-quote {
+  border-left: 3px solid var(--lantern);
+  padding: 6px 0 6px 22px;
+  margin: 34px 0;
+  color: var(--paper);
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.08rem;
+  line-height: 2;
+}
+
+/* ===== カード ===== */
+.card {
+  background: var(--dusk-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 30px 28px;
+  margin-top: 34px;
+}
+.card h3 { color: var(--lantern-soft); font-size: 1.05rem; margin-bottom: 12px; }
+.card p { font-size: 0.95rem; margin-bottom: 0.9em; }
+.card p:last-child { margin-bottom: 0; }
+.fact-list { list-style: none; margin: 22px 0 0; }
+.fact-list li {
+  display: flex;
+  gap: 14px;
+  padding: 10px 0;
+  border-top: 1px dashed rgba(246,239,227,0.15);
+  font-size: 0.93rem;
+  color: var(--paper-dim);
+}
+.fact-list li:first-child { border-top: none; padding-top: 0; }
+.fact-list .k { color: var(--lantern-soft); flex: 0 0 6.5em; }
+
+/* 名刺画像 */
+.meishi-figure {
+  margin: 36px 0 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(231,127,176,0.35);
+  box-shadow: 0 10px 40px rgba(109,58,120,0.45);
+}
+.meishi-figure img { display: block; width: 100%; }
+.meishi-figure figcaption {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: center;
+  padding: 10px 14px;
+  background: var(--dusk-soft);
+}
+
+/* ===== 流れ（ステップ） ===== */
+.steps { list-style: none; margin-top: 36px; counter-reset: step; }
+.steps li {
+  position: relative;
+  padding: 0 0 30px 60px;
+  counter-increment: step;
+}
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0; top: 0;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 35%, var(--lantern-soft), var(--lantern));
+  color: #2a1c0d;
+  font-weight: 700;
+  font-family: "Zen Maru Gothic", sans-serif;
+  box-shadow: 0 0 14px rgba(240,160,75,0.4);
+}
+.steps li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 18px; top: 44px; bottom: 6px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--line), rgba(240,160,75,0.06));
+}
+.steps h3 {
+  font-size: 1rem;
+  color: var(--paper);
+  margin-bottom: 6px;
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 700;
+}
+.steps p { font-size: 0.92rem; margin-bottom: 0; }
+
+/* こんな方へ */
+.for-list { list-style: none; margin-top: 30px; }
+.for-list li {
+  position: relative;
+  padding: 10px 0 10px 34px;
+  color: var(--paper-dim);
+  border-top: 1px dashed rgba(246,239,227,0.15);
+}
+.for-list li:first-child { border-top: none; }
+.for-list li::before {
+  content: "";
+  position: absolute;
+  left: 4px; top: 1.15em;
+  width: 12px; height: 15px;
+  border-radius: 45% 45% 50% 50%;
+  background: radial-gradient(circle at 50% 40%, var(--lantern-soft), var(--lantern) 70%);
+  box-shadow: 0 0 10px 2px rgba(240,160,75,0.4);
+}
+
+/* ===== ボタン ===== */
+.btn-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+.btn {
+  display: inline-block;
+  padding: 13px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.93rem;
+  font-weight: 500;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--lantern), #e2823a);
+  color: #2a1c0d;
+  box-shadow: 0 4px 22px rgba(240,160,75,0.4);
+}
+.btn-ghost {
+  border: 1px solid var(--line);
+  color: var(--lantern-soft);
+  background: rgba(23,20,48,0.35);
+}
+
+/* ===== SNSリンク ===== */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.link-card {
+  display: block;
+  background: var(--dusk-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px 22px 20px;
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.link-card:hover { transform: translateY(-3px); border-color: var(--lantern); box-shadow: 0 8px 30px rgba(240,160,75,0.18); }
+.link-card .name { color: var(--paper); font-weight: 700; font-size: 1rem; }
+.link-card .desc { color: var(--paper-dim); font-size: 0.85rem; margin-top: 6px; line-height: 1.7; }
+.link-card .arrow { color: var(--lantern); font-size: 0.85rem; margin-top: 10px; display: inline-block; }
+.link-card.soon { opacity: 0.6; pointer-events: none; border-style: dashed; }
+.link-card.soon .arrow { color: var(--ink-soft); }
+
+/* ===== フッター ===== */
+footer {
+  text-align: center;
+  padding: 0 24px 48px;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  background: var(--dusk-deep);
+}
+.footer-lanterns { max-width: 340px; margin: 0 auto 8px; opacity: 0.9; }
+.footer-lanterns svg { width: 100%; height: auto; }
+footer .foot-mark { color: var(--lantern-soft); font-family: "Shippori Mincho", serif; font-size: 1rem; margin-bottom: 12px; }
+
+@media (max-width: 540px) {
+  .profile-head { flex-direction: column; text-align: center; }
+}
