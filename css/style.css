@@ -353,7 +353,9 @@ footer .foot-mark { color: var(--lantern-soft); font-family: "Shippori Mincho", 
   .hero-eyebrow { letter-spacing: 0.2em; font-size: 0.76rem; margin-bottom: 20px; }
   h1 { font-size: clamp(1.5rem, 7.4vw, 2rem); line-height: 1.65; }
   h1 .small { font-size: 0.5em; margin-top: 14px; line-height: 1.7; }
-  .hero-lead { font-size: 0.93rem; }
+  /* 折り返しが増える幅では、短い最終行が中央に浮かないよう行頭を左に揃える
+     （見出し・ボタンは中央のまま。文章のブロック自体は中央に置く） */
+  .hero-lead { font-size: 0.93rem; text-align: left; }
   .back-link { top: 16px; left: 20px; font-size: 0.82rem; }
 
   section { padding: 58px 0; }
