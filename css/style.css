@@ -1,21 +1,21 @@
 :root {
   /* 夕暮れの空 */
-  --sky-top: #171430;
-  --sky-mid: #2b2154;
-  --sky-glow: #6d3a78;
+  --sky-top: #1f1a3e;
+  --sky-mid: #362a66;
+  --sky-glow: #7b4589;
   --neon-pink: #e77fb0;
   --neon-purple: #9f7fe0;
   /* 横丁の灯り */
   --lantern: #f0a04b;
   --lantern-soft: #f6c98a;
   /* 地の色 */
-  --dusk-deep: #1b1732;
-  --dusk: #241d42;
-  --dusk-soft: #2f2757;
+  --dusk-deep: #241e40;
+  --dusk: #2e2652;
+  --dusk-soft: #3a3168;
   --paper: #f6efe3;
-  --paper-dim: #cfc5be;
-  --ink-soft: #a89ec0;
-  --line: rgba(240, 160, 75, 0.28);
+  --paper-dim: #e2d9d0;
+  --ink-soft: #bdb3d4;
+  --line: rgba(240, 160, 75, 0.36);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -23,6 +23,7 @@ body {
   background: var(--dusk-deep);
   color: var(--paper);
   font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  font-weight: 500; /* 細い線だと読みにくいので、本文を一段太くする */
   line-height: 1.9;
   letter-spacing: 0.04em;
   /* 日本語の折り返しを整える。
@@ -33,7 +34,7 @@ body {
 }
 h1, h2, h3 {
   font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
-  font-weight: 600;
+  font-weight: 700;
   text-wrap: balance; /* 見出しの行の長さを揃える */
 }
 p, li { text-wrap: pretty; } /* 最終行が1〜2文字だけ残るのを防ぐ */
@@ -58,8 +59,8 @@ header {
     var(--sky-top) 0%,
     var(--sky-mid) 38%,
     var(--sky-glow) 68%,
-    #b0447c 88%,
-    #d97a55 100%);
+    #bc4f88 88%,
+    #e08660 100%);
   padding: 96px 24px 200px;
 }
 header.subpage {
@@ -148,7 +149,7 @@ section:nth-of-type(even) { background: var(--dusk); }
 }
 h2 { font-size: clamp(1.35rem, 4vw, 1.8rem); margin-bottom: 30px; line-height: 1.6; }
 section p { color: var(--paper-dim); margin-bottom: 1.4em; }
-section p strong { color: var(--paper); font-weight: 500; }
+section p strong { color: var(--paper); font-weight: 700; }
 
 /* ===== プロフィール ===== */
 .profile-head {
@@ -175,6 +176,7 @@ section p strong { color: var(--paper); font-weight: 500; }
   margin: 34px 0;
   color: var(--paper);
   font-family: "Shippori Mincho", serif;
+  font-weight: 600;
   font-size: 1.08rem;
   line-height: 2;
 }
@@ -284,7 +286,7 @@ section p strong { color: var(--paper); font-weight: 500; }
   border-radius: 999px;
   text-decoration: none;
   font-size: 0.93rem;
-  font-weight: 500;
+  font-weight: 700;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .btn:hover { transform: translateY(-2px); }
