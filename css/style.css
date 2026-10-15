@@ -46,6 +46,8 @@ img { max-width: 100%; }
 
 /* PC幅でだけ効かせる改行。スマホでは無効化して自然に流す */
 .br-pc { display: inline; }
+/* 「3,000円」のように、途中で折り返したくない語をまとめる */
+.nowrap { white-space: nowrap; }
 
 .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
@@ -206,6 +208,7 @@ section p strong { color: var(--paper); font-weight: 900; }
 }
 .fact-list li:first-child { border-top: none; padding-top: 0; }
 .fact-list .k { color: var(--lantern-soft); flex: 0 0 6.5em; }
+.fact-list + p { margin-top: 20px; } /* 表のあとに続く一文との間をあける */
 
 /* 名刺画像 */
 .meishi-figure {
