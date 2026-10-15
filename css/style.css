@@ -298,11 +298,13 @@ section p strong { color: var(--paper); font-weight: 900; }
   color: #2a1c0d;
   box-shadow: 0 4px 22px rgba(240,160,75,0.4);
 }
+/* 2つ目のボタン。暗い地に沈まないよう、明るい藤色で塗る（文字との差 7:1 前後） */
 .btn-ghost {
-  border: 1px solid var(--line);
-  color: var(--lantern-soft);
-  background: rgba(23,20,48,0.35);
+  background: linear-gradient(135deg, #c3adf4, #a689e8);
+  color: #1f1a3e;
+  box-shadow: 0 4px 22px rgba(166,137,232,0.45);
 }
+.btn-ghost:hover { box-shadow: 0 6px 26px rgba(166,137,232,0.6); }
 
 /* ===== SNSリンク ===== */
 .links-grid {
