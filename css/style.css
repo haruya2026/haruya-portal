@@ -18,12 +18,15 @@
   --line: rgba(240, 160, 75, 0.36);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  font-size: 112.5%; /* 1rem = 18px。小さい文字がつらいので、全体の基準を上げる */
+}
 body {
   background: var(--dusk-deep);
   color: var(--paper);
   font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
-  font-weight: 500; /* 細い線だと読みにくいので、本文を一段太くする */
+  font-weight: 700; /* 細い線だと読みにくいので、本文も太字にする */
   line-height: 1.9;
   letter-spacing: 0.04em;
   /* 日本語の折り返しを整える。
@@ -34,7 +37,7 @@ body {
 }
 h1, h2, h3 {
   font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
-  font-weight: 700;
+  font-weight: 800; /* 明朝は横線が細いので、いちばん太い字で */
   text-wrap: balance; /* 見出しの行の長さを揃える */
 }
 p, li { text-wrap: pretty; } /* 最終行が1〜2文字だけ残るのを防ぐ */
@@ -100,14 +103,14 @@ header.subpage {
   color: var(--paper);
   opacity: 0.85;
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
 }
 .back-link:hover { opacity: 1; }
 
 .hero-inner { position: relative; z-index: 2; }
 .hero-eyebrow {
   color: var(--lantern-soft);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   letter-spacing: 0.35em;
   margin-bottom: 26px;
   text-shadow: 0 0 14px rgba(240,160,75,0.5);
@@ -118,11 +121,11 @@ h1 {
   margin-bottom: 26px;
   text-shadow: 0 2px 26px rgba(23, 20, 48, 0.8);
 }
-h1 .small { display: block; font-size: 0.48em; color: var(--paper); opacity: 0.85; margin-top: 18px; font-weight: 500; }
+h1 .small { display: block; font-size: 0.48em; color: var(--paper); opacity: 0.85; margin-top: 18px; font-weight: 700; }
 .hero-lead {
   color: var(--paper);
   opacity: 0.88;
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   max-width: 34em;
   margin: 0 auto;
   text-shadow: 0 1px 14px rgba(23, 20, 48, 0.8);
@@ -136,7 +139,7 @@ section:nth-of-type(even) { background: var(--dusk); }
   align-items: center;
   gap: 10px;
   color: var(--lantern);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   letter-spacing: 0.3em;
   margin-bottom: 14px;
 }
@@ -149,7 +152,7 @@ section:nth-of-type(even) { background: var(--dusk); }
 }
 h2 { font-size: clamp(1.35rem, 4vw, 1.8rem); margin-bottom: 30px; line-height: 1.6; }
 section p { color: var(--paper-dim); margin-bottom: 1.4em; }
-section p strong { color: var(--paper); font-weight: 700; }
+section p strong { color: var(--paper); font-weight: 900; }
 
 /* ===== プロフィール ===== */
 .profile-head {
@@ -168,7 +171,7 @@ section p strong { color: var(--paper); font-weight: 700; }
   flex-shrink: 0;
 }
 .profile-head h2 { margin-bottom: 8px; }
-.profile-head .role { color: var(--neon-pink); font-size: 0.9rem; letter-spacing: 0.12em; }
+.profile-head .role { color: var(--neon-pink); font-size: 1rem; letter-spacing: 0.12em; }
 
 .story-quote {
   border-left: 3px solid var(--lantern);
@@ -176,8 +179,8 @@ section p strong { color: var(--paper); font-weight: 700; }
   margin: 34px 0;
   color: var(--paper);
   font-family: "Shippori Mincho", serif;
-  font-weight: 600;
-  font-size: 1.08rem;
+  font-weight: 800;
+  font-size: 1.15rem;
   line-height: 2;
 }
 
@@ -189,8 +192,8 @@ section p strong { color: var(--paper); font-weight: 700; }
   padding: 30px 28px;
   margin-top: 34px;
 }
-.card h3 { color: var(--lantern-soft); font-size: 1.05rem; margin-bottom: 12px; }
-.card p { font-size: 0.95rem; margin-bottom: 0.9em; }
+.card h3 { color: var(--lantern-soft); font-size: 1.15rem; margin-bottom: 12px; }
+.card p { font-size: 1rem; margin-bottom: 0.9em; }
 .card p:last-child { margin-bottom: 0; }
 .fact-list { list-style: none; margin: 22px 0 0; }
 .fact-list li {
@@ -198,7 +201,7 @@ section p strong { color: var(--paper); font-weight: 700; }
   gap: 14px;
   padding: 10px 0;
   border-top: 1px dashed rgba(246,239,227,0.15);
-  font-size: 0.93rem;
+  font-size: 1rem;
   color: var(--paper-dim);
 }
 .fact-list li:first-child { border-top: none; padding-top: 0; }
@@ -214,7 +217,7 @@ section p strong { color: var(--paper); font-weight: 700; }
 }
 .meishi-figure img { display: block; width: 100%; }
 .meishi-figure figcaption {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--ink-soft);
   text-align: center;
   padding: 10px 14px;
@@ -239,7 +242,7 @@ section p strong { color: var(--paper); font-weight: 700; }
   justify-content: center;
   background: radial-gradient(circle at 50% 35%, var(--lantern-soft), var(--lantern));
   color: #2a1c0d;
-  font-weight: 700;
+  font-weight: 900;
   font-family: "Zen Maru Gothic", sans-serif;
   box-shadow: 0 0 14px rgba(240,160,75,0.4);
 }
@@ -251,13 +254,13 @@ section p strong { color: var(--paper); font-weight: 700; }
   background: linear-gradient(180deg, var(--line), rgba(240,160,75,0.06));
 }
 .steps h3 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--paper);
   margin-bottom: 6px;
   font-family: "Zen Maru Gothic", sans-serif;
-  font-weight: 700;
+  font-weight: 900;
 }
-.steps p { font-size: 0.92rem; margin-bottom: 0; }
+.steps p { font-size: 1rem; margin-bottom: 0; }
 
 /* こんな方へ */
 .for-list { list-style: none; margin-top: 30px; }
@@ -285,7 +288,7 @@ section p strong { color: var(--paper); font-weight: 700; }
   padding: 13px 26px;
   border-radius: 999px;
   text-decoration: none;
-  font-size: 0.93rem;
+  font-size: 1rem;
   font-weight: 700;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -318,9 +321,9 @@ section p strong { color: var(--paper); font-weight: 700; }
   transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .link-card:hover { transform: translateY(-3px); border-color: var(--lantern); box-shadow: 0 8px 30px rgba(240,160,75,0.18); }
-.link-card .name { color: var(--paper); font-weight: 700; font-size: 1rem; }
-.link-card .desc { color: var(--paper-dim); font-size: 0.85rem; margin-top: 6px; line-height: 1.7; }
-.link-card .arrow { color: var(--lantern); font-size: 0.85rem; margin-top: 10px; display: inline-block; }
+.link-card .name { color: var(--paper); font-weight: 900; font-size: 1.1rem; }
+.link-card .desc { color: var(--paper-dim); font-size: 0.95rem; margin-top: 6px; line-height: 1.7; }
+.link-card .arrow { color: var(--lantern); font-size: 0.95rem; margin-top: 10px; display: inline-block; }
 .link-card.soon { opacity: 0.6; pointer-events: none; border-style: dashed; }
 .link-card.soon .arrow { color: var(--ink-soft); }
 
@@ -329,12 +332,12 @@ footer {
   text-align: center;
   padding: 0 24px 48px;
   color: var(--ink-soft);
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   background: var(--dusk-deep);
 }
 .footer-lanterns { max-width: 340px; margin: 0 auto 8px; opacity: 0.9; }
 .footer-lanterns svg { width: 100%; height: auto; }
-footer .foot-mark { color: var(--lantern-soft); font-family: "Shippori Mincho", serif; font-size: 1rem; margin-bottom: 12px; }
+footer .foot-mark { color: var(--lantern-soft); font-family: "Shippori Mincho", serif; font-size: 1.1rem; margin-bottom: 12px; }
 
 /* ===== タブレット ===== */
 @media (max-width: 820px) {
@@ -352,13 +355,13 @@ footer .foot-mark { color: var(--lantern-soft); font-family: "Shippori Mincho", 
 
   header { min-height: auto; padding: 76px 20px 120px; }
   header.subpage { min-height: auto; padding: 76px 20px 110px; }
-  .hero-eyebrow { letter-spacing: 0.2em; font-size: 0.76rem; margin-bottom: 20px; }
+  .hero-eyebrow { letter-spacing: 0.16em; font-size: 0.85rem; margin-bottom: 20px; }
   h1 { font-size: clamp(1.5rem, 7.4vw, 2rem); line-height: 1.65; }
-  h1 .small { font-size: 0.5em; margin-top: 14px; line-height: 1.7; }
+  h1 .small { font-size: 0.6em; margin-top: 14px; line-height: 1.7; }
   /* 折り返しが増える幅では、短い最終行が中央に浮かないよう行頭を左に揃える
      （見出し・ボタンは中央のまま。文章のブロック自体は中央に置く） */
-  .hero-lead { font-size: 0.93rem; text-align: left; }
-  .back-link { top: 16px; left: 20px; font-size: 0.82rem; }
+  .hero-lead { font-size: 1rem; text-align: left; }
+  .back-link { top: 16px; left: 20px; font-size: 0.9rem; }
 
   section { padding: 58px 0; }
   h2 { margin-bottom: 24px; }
@@ -367,15 +370,15 @@ footer .foot-mark { color: var(--lantern-soft); font-family: "Shippori Mincho", 
   .profile-head { flex-direction: column; text-align: center; gap: 18px; }
   .profile-photo { width: 124px; height: 124px; }
 
-  .story-quote { font-size: 1rem; padding-left: 18px; margin: 28px 0; line-height: 1.9; }
+  .story-quote { font-size: 1.08rem; padding-left: 18px; margin: 28px 0; line-height: 1.9; }
 
   .card { padding: 24px 20px; }
   /* 項目名と中身を縦に積んで、狭い幅で潰れないようにする */
   .fact-list li { flex-direction: column; gap: 2px; padding: 12px 0; }
-  .fact-list .k { flex: none; font-size: 0.84rem; }
+  .fact-list .k { flex: none; font-size: 0.92rem; }
 
   .steps li { padding: 0 0 26px 46px; }
-  .steps li::before { width: 32px; height: 32px; font-size: 0.88rem; }
+  .steps li::before { width: 34px; height: 34px; font-size: 0.92rem; }
   .steps li:not(:last-child)::after { left: 15px; top: 38px; }
   .for-list li { padding-left: 28px; }
   .for-list li::before { left: 2px; }
