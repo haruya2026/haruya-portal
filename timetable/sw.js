@@ -1,6 +1,6 @@
 // 時刻表はページ内にあるので、オフラインでも開けるようにキャッシュする。
 // ページ本体は「ネット優先」：更新したらすぐ反映、電波がないときはキャッシュを使う。
-const CACHE = 'norikae-v2';
+const CACHE = 'norikae-v3';
 const ASSETS = ['./', './index.html', './manifest.json', './icon.svg', './icon-192.png', './icon-512.png', './icon-maskable-192.png', './icon-maskable-512.png', './apple-touch-icon.png'];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));
