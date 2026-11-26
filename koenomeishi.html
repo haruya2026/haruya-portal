@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/style.css?v=9">
 </head>
 <body>
 
@@ -89,9 +89,11 @@
       <p>1枚100円ほど。これなら、出会った人に気負わず手渡せます。</p>
     </div>
     <figure class="meishi-figure">
+      <button class="zoom-trigger" type="button" data-zoom="images/koenomeishi-process.jpg" aria-label="画像を大きくして見る">
       <img src="images/koenomeishi-process.jpg"
            alt="声の名刺は、ただの名刺じゃない。価値が生まれるのは、この対話のプロセスです。6つのステップ——初回ヒアリング（対話セッション）、価値・強みの発掘、伝えたい相手と届けたい想いの明確化、自己紹介の設計、声の名刺収録、SNS・プロフィールへ展開——で、あなたの魅力を言葉と声に。あなたが手にするもの：自分の魅力・強みの発見、伝わる言葉・自己紹介文、あなただけの肩書き・キャッチコピー、声の名刺（音声データ）、SNS・プロフィール文への展開、発信の軸と自信。">
-      <figcaption>価値が生まれるのは、この対話のプロセス——6つのステップで、あなたの魅力を言葉と声に</figcaption>
+      </button>
+      <figcaption>価値が生まれるのは、この対話のプロセス——6つのステップで、あなたの魅力を言葉と声に<span class="zoom-hint">画像をタップすると、大きく見られます</span></figcaption>
     </figure>
   </div>
 </section>
@@ -120,7 +122,7 @@
         <p>「ちょっと気になって」だけで大丈夫。まずは公式LINEから声をかけてください。</p>
       </li>
       <li>
-        <h3>1対1でお話（Zoom）</h3>
+        <h3>ワンコイン相談（500円・Zoom）</h3>
         <p>どんなものか、どう使えそうか、費用のことも——気になることをぜんぶ、ここでお話しします。聞いてから決めてもらえれば十分です。</p>
       </li>
       <li>
@@ -147,8 +149,8 @@
   <div class="wrap">
     <p class="sec-label">PRICE</p>
     <h2>費用について</h2>
-    <p>制作の費用は、このページには書いていません。</p>
-    <p>声の名刺は、渡す相手やお仕事によって、いちばん活きる形が一人ひとり違うからです。1対1でお話しするときに、あなたの使い方に合わせて丁寧にご案内します。<strong>聞いてから「今回はやめておく」でも、もちろん大丈夫。</strong>押したり、焦らせたりは、しません。それはぼくの番組でもこの名刺でも、いちばん大事にしていることなので。</p>
+    <p>制作の費用は、モニター価格で <span class="nowrap">23,000円〜</span> です。</p>
+    <p>声の名刺は、渡す相手やお仕事によって、いちばん活きる形が一人ひとり違います。くわしい形と金額は、ワンコイン相談のときに、あなたの使い方に合わせて丁寧にご案内します。<strong>聞いてから「今回はやめておく」でも、もちろん大丈夫。</strong>押したり、焦らせたりは、しません。それはぼくの番組でもこの名刺でも、いちばん大事にしていることなので。</p>
   </div>
 </section>
 
@@ -191,6 +193,42 @@
   <p class="foot-mark">— 今日も、横丁に灯りをともしています —</p>
   <p>© ハルヤ（菊地顕太郎）｜ありのまま横丁</p>
 </footer>
+
+<!-- 画像をタップで拡大 -->
+<div class="zoom-overlay" id="zoom-overlay" hidden role="dialog" aria-modal="true" aria-label="大きくした画像">
+  <button class="zoom-close" type="button">✕ 閉じる</button>
+  <div class="zoom-scroll"><img alt=""></div>
+</div>
+<script>
+(function () {
+  var overlay = document.getElementById('zoom-overlay');
+  var big = overlay.querySelector('img');
+  var closeBtn = overlay.querySelector('.zoom-close');
+  var scroller = overlay.querySelector('.zoom-scroll');
+  var opener = null;
+  function openZoom(btn) {
+    opener = btn;
+    big.src = btn.getAttribute('data-zoom');
+    big.alt = btn.querySelector('img').alt;
+    overlay.hidden = false;
+    document.body.classList.add('zoom-open');
+    scroller.scrollTop = 0;
+    scroller.scrollLeft = 0;
+    closeBtn.focus();
+  }
+  function closeZoom() {
+    overlay.hidden = true;
+    document.body.classList.remove('zoom-open');
+    if (opener) opener.focus();
+  }
+  document.querySelectorAll('.zoom-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function () { openZoom(btn); });
+  });
+  closeBtn.addEventListener('click', closeZoom);
+  scroller.addEventListener('click', function (e) { if (e.target === scroller) closeZoom(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !overlay.hidden) closeZoom(); });
+})();
+</script>
 
 </body>
 </html>

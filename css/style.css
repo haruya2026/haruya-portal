@@ -219,6 +219,61 @@ section p strong { color: var(--paper); font-weight: 900; }
   box-shadow: 0 10px 40px rgba(109,58,120,0.45);
 }
 .meishi-figure img { display: block; width: 100%; }
+
+/* ===== 画像をタップで拡大 ===== */
+.zoom-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.zoom-hint {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--lantern-soft);
+}
+.zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(20, 17, 38, 0.95);
+}
+.zoom-overlay[hidden] { display: none; }
+.zoom-scroll {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 72px 16px 32px;
+}
+/* スマホでは画面の2倍の幅まで広げて、文字を読める大きさにする（元画像の幅1149pxまで） */
+.zoom-scroll img {
+  display: block;
+  width: min(1149px, 200vw);
+  max-width: none;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+.zoom-close {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 1001;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--lantern);
+  color: var(--sky-top);
+  cursor: pointer;
+}
+body.zoom-open { overflow: hidden; }
 .meishi-figure figcaption {
   font-size: 0.9rem;
   color: var(--ink-soft);
